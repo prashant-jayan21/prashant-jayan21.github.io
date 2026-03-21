@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prashant Jayannavar — PhD, UIUC</title>
+  <meta name="description" content="Prashant Jayannavar — PhD in CS from UIUC, specializing in NLP, embodied dialogue, and spatial intelligence.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #faf6f1;
+      --color-text: #2c2418;
+      --color-muted: #8a7a68;
+      --color-accent: #8b5e3c;
+      --color-accent-light: #f0e6d8;
+      --color-border: #e0d5c7;
+      --color-card-bg: #ffffff;
+      --font-serif: 'Source Serif 4', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+      --max-width: 1020px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 246, 241, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    nav .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 54px;
+    }
+    nav .nav-name {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 17px;
+      color: var(--color-text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    nav .nav-links { display: flex; gap: 28px; }
+    nav .nav-links a {
+      font-size: 13.5px;
+      color: var(--color-muted);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    nav .nav-links a:hover { color: var(--color-text); }
+
+    /* ---- MOBILE NAV ---- */
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 20px; height: 2px; background: var(--color-text); margin: 4px 0; transition: 0.2s; }
+
+    /* ---- LAYOUT ---- */
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    section:last-child { border-bottom: none; }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 28px;
+      letter-spacing: -0.02em;
+      color: var(--color-text);
+    }
+
+    a { color: var(--color-accent); }
+    a:hover { text-decoration: none; }
+
+    /* ---- HERO / ABOUT ---- */
+    .hero {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      padding: 64px 0 56px;
+    }
+    .hero-photo {
+      flex-shrink: 0;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: var(--color-accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 3px solid #fff;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-photo .placeholder-icon {
+      color: var(--color-accent);
+      opacity: 0.4;
+    }
+    .hero-text h1 {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+    .hero-text .subtitle {
+      margin-top: 6px;
+      color: var(--color-muted);
+      font-size: 15.5px;
+    }
+    .hero-text .bio {
+      margin-top: 18px;
+      color: var(--color-text);
+      line-height: 1.75;
+      max-width: 720px;
+    }
+
+    /* ---- JOB MARKET BADGE ---- */
+    .job-market-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 7px 16px;
+      font-size: 13.5px;
+      color: var(--color-text);
+      background: var(--color-accent-light);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      flex-wrap: wrap;
+    }
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4a9e6a;
+      flex-shrink: 0;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .badge-link {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--color-accent);
+      text-decoration: none;
+      margin-left: 4px;
+    }
+    .badge-link:hover { text-decoration: underline; }
+    .hero-links {
+      margin-top: 20px;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .hero-links a {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--color-accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      background: var(--color-accent-light);
+      transition: background 0.2s, color 0.2s;
+    }
+    .hero-links a:hover {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
+    /* ---- COMMITTEE CARD ---- */
+    .committee-card {
+      margin-top: 18px;
+      padding: 14px 18px;
+      background: var(--color-accent-light);
+      border-radius: 8px;
+      border-left: 3px solid var(--color-accent);
+      max-width: 720px;
+    }
+    .committee-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-accent);
+      margin-bottom: 6px;
+    }
+    .committee-members {
+      display: flex;
+      gap: 0;
+      align-items: stretch;
+    }
+    .committee-member {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 10px;
+      border-right: 1px solid var(--color-border);
+    }
+    .committee-member:last-child { border-right: none; }
+    .committee-member:first-child { padding-left: 0; }
+    .committee-member:last-child { padding-right: 0; }
+    .committee-members a {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--color-accent);
+      text-decoration: none;
+      line-height: 1.3;
+    }
+    .committee-members a:hover { text-decoration: underline; }
+    .committee-role {
+      font-size: 12px;
+      color: var(--color-muted);
+      margin-top: 2px;
+    }
+    .committee-sep {
+      margin: 0 8px;
+      color: var(--color-border);
+    }
+
+    /* ---- NEWS ---- */
+    .news-list { list-style: none; }
+    .news-item {
+      display: flex;
+      gap: 16px;
+      padding: 12px 0;
+      align-items: baseline;
+    }
+    .news-item + .news-item { border-top: 1px solid var(--color-border); }
+    .news-date {
+      flex-shrink: 0;
+      width: 90px;
+      font-size: 13px;
+      color: var(--color-muted);
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+    }
+    .news-content { font-size: 14.5px; }
+
+    /* ---- PUBLICATIONS ---- */
+    .pub-item {
+      padding: 24px 0;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .pub-item + .pub-item { border-top: 1px solid var(--color-border); }
+    .pub-thumb {
+      flex-shrink: 0;
+      width: 170px;
+      height: 110px;
+      border-radius: 6px;
+      background: var(--color-accent-light);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pub-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .pub-thumb .thumb-placeholder {
+      color: var(--color-accent);
+      opacity: 0.25;
+    }
+    .pub-body { flex: 1; min-width: 0; }
+    .pub-title {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.4;
+      color: var(--color-text);
+    }
+    .pub-title a { color: inherit; text-decoration: none; }
+    .pub-title a:hover { color: var(--color-accent); }
+    .pub-authors {
+      margin-top: 4px;
+      font-size: 13.5px;
+      color: var(--color-muted);
+      line-height: 1.5;
+    }
+    .pub-authors .me { color: var(--color-text); font-weight: 600; }
+    .pub-venue {
+      margin-top: 3px;
+      font-size: 13.5px;
+      color: var(--color-muted);
+      font-style: italic;
+    }
+    .pub-links {
+      margin-top: 8px;
+      display: flex;
+      gap: 10px;
+    }
+    .pub-links a {
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 4px;
+      background: var(--color-accent-light);
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .pub-links a:hover { background: #e2d4c4; }
+    .pub-tag {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--color-accent);
+      color: #fff;
+      letter-spacing: 0.02em;
+      margin-right: 6px;
+      vertical-align: middle;
+      line-height: 1.4;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 24px 48px;
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--color-muted);
+    }
+    footer a { color: var(--color-muted); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 640px) {
+      .hero { flex-direction: column; align-items: center; text-align: center; gap: 24px; padding: 40px 0 40px; }
+      .hero-photo { width: 130px; height: 130px; }
+      .hero-text h1 { font-size: 26px; }
+      .hero-links { justify-content: center; }
+      .job-market-badge { justify-content: center; }
+      .hero-text .bio { max-width: 100%; }
+      .committee-card { max-width: 100%; border-left: none; border-top: 3px solid var(--color-accent); }
+      .committee-members { flex-wrap: wrap; }
+      .committee-member { flex: 1 1 40%; border-right: none; padding: 6px 0; }
+      section { padding: 40px 0; }
+      h2 { font-size: 21px; }
+      .pub-item { flex-direction: column; gap: 12px; }
+      .pub-thumb { width: 100%; height: 120px; }
+      nav .nav-links { 
+        display: none; 
+        position: absolute;
+        top: 54px;
+        left: 0;
+        right: 0;
+        background: rgba(250,246,241,0.96);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 16px 24px;
+        gap: 14px;
+        border-bottom: 1px solid var(--color-border);
+      }
+      nav .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+    }
+
+    /* ---- FADE-IN ---- */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-name">Prashant Jayannavar</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#cv">CV</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="hero fade-in">
+    <div class="hero-photo">
+      <!-- Replace the placeholder below with: <img src="photo.jpg" alt="Prashant Jayannavar"> -->
+      <svg class="placeholder-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <h1>Prashant Jayannavar</h1>
+      <div class="subtitle">PhD Candidate, Computer Science · University of Illinois Urbana-Champaign</div>
+      <div class="job-market-badge">
+        <span class="badge-dot"></span>
+        Open to <strong>Research Scientist</strong> &amp; <strong>Applied Scientist</strong> roles
+        <a href="mailto:paj3@illinois.edu" class="badge-link">Get in touch →</a>
+      </div>
+      <p class="bio">
+        I am a graduating CS PhD student at <a href="https://cs.illinois.edu" target="_blank">UIUC</a>, advised by <a href="https://juliahmr.cs.illinois.edu/" target="_blank">Prof. Julia Hockenmaier</a>, specializing in <strong>Natural Language Processing (NLP)</strong>. My research centers on instruction following agents in <strong>embodied dialogue</strong>, with a focus on <strong>spatial intelligence</strong> and <strong>low-data regimes</strong>. My work advances this field by developing a novel research ecosystem — spanning real and synthetic datasets, benchmarks, efficient learning methods, and LLMs — using simulated <strong>multimodal</strong> environments such as Minecraft.
+      </p>
+      <p class="bio" style="margin-top:10px;">
+        Previously, I spent 2.5 years as a <strong>Data Scientist</strong> at the AI startup <strong>x.ai</strong> (acquired by Bizzabo), building a task-oriented dialogue agent for autonomous meeting scheduling.
+      </p>
+      <div class="committee-card">
+        <div class="committee-label">PhD Thesis Committee</div>
+        <div class="committee-members">
+          <div class="committee-member">
+            <a href="https://juliahmr.cs.illinois.edu/" target="_blank">Julia Hockenmaier</a>
+            <span class="committee-role">Advisor, UIUC</span>
+          </div>
+          <div class="committee-member">
+            <a href="https://siebelschool.illinois.edu/about/people/faculty/dilek" target="_blank">Dilek Hakkani-Tur</a>
+            <span class="committee-role">UIUC</span>
+          </div>
+          <div class="committee-member">
+            <a href="https://czhai.cs.illinois.edu/" target="_blank">ChengXiang Zhai</a>
+            <span class="committee-role">UIUC</span>
+          </div>
+          <div class="committee-member">
+            <a href="https://sites.google.com/view/massimo-poesio/home" target="_blank">Massimo Poesio</a>
+            <span class="committee-role">QMUL, UK</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-links">
+        <a href="mailto:paj3@illinois.edu">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Email
+        </a>
+        <a href="https://scholar.google.com/citations?user=BpraqqsAAAAJ&hl=en&oi=ao" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          Google Scholar
+        </a>
+        <a href="https://github.com/prashant-jayan21" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/prashantjayannavar" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://x.com/p_jayannavar" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733 -16h-4.267z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
+          Twitter/X
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWS ===== -->
+  <section id="news" class="fade-in">
+    <h2>News</h2>
+    <ul class="news-list">
+      <li class="news-item">
+        <span class="news-date">Feb 2026</span>
+        <span class="news-content">Organizing a special session on <a href="https://cog2026.org/?seccion=informacion&subSeccion=contenido&id=14" target="_blank"><strong>Evaluating and Advancing Spatial Intelligence through Games</strong></a> at <strong>IEEE Conference on Games (CoG) 2026</strong>, with Alessandro Suglia, Sina Zarrieß, and Massimo Poesio. [<a href="https://www.linkedin.com/posts/prashantjayannavar_cog2026-ieee-spatialintelligence-activity-7424088943824138240-RYD5" target="_blank">LinkedIn</a> · <a href="https://x.com/p_jayannavar/status/2018347901068726341" target="_blank">X</a>]</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">Jan 2026</span>
+        <span class="news-content">Successfully defended my PhD!</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">Dec 2025</span>
+        <span class="news-content"><a href="#pub-j1">BAP v2</a> accepted as a long paper in the <strong>Computational Linguistics</strong> journal. [<a href="https://www.linkedin.com/posts/prashantjayannavar_bap-v2-an-enhanced-task-framework-for-instruction-activity-7404248012635561984-ETY7" target="_blank">LinkedIn</a> · <a href="https://x.com/p_jayannavar/status/1998490253179695454" target="_blank">X</a>]</span>
+      </li>
+      <li class="news-item">
+        <span class="news-date">Dec 2024</span>
+        <span class="news-content">Invited participant at <a href="https://www.dagstuhl.de/24492" target="_blank"><strong>Dagstuhl Perspectives Workshop 24492</strong></a>: <em>Human in the Loop Learning through Grounded Interaction in Games</em>, Schloss Dagstuhl, Germany (Dec 1–6, 2024).</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===== PUBLICATIONS ===== -->
+  <section id="publications" class="fade-in">
+    <h2>Publications</h2>
+    <p style="font-size:12.5px; color:var(--color-muted); margin-bottom:24px;">J = Journal · C = Conference · W = Workshop · D = Demo · R = Report</p>
+    <p style="font-size:13.5px; color:var(--color-muted); margin-bottom:20px;">* denotes equal contribution</p>
+
+    <h3 style="font-family:var(--font-serif); font-size:18px; font-weight:600; margin-bottom:16px; letter-spacing:-0.01em;">Selected Papers</h3>
+
+    <div class="pub-item" id="pub-j1">
+      <div class="pub-thumb">
+        <!-- Replace with: <img src="images/bapv2.png" alt="BAP v2 thumbnail"> -->
+        <svg class="thumb-placeholder" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+      </div>
+      <div class="pub-body">
+        <div class="pub-title"><span class="pub-tag">J.1</span><a href="https://arxiv.org/abs/2501.10836">BAP v2: An Enhanced Task Framework for Instruction Following in Minecraft Dialogues</a></div>
+        <div class="pub-authors"><span class="me">Prashant Jayannavar</span>, Liliang Ren, Marisa Hudspeth, Risham Sidhu, Charlotte Lambert, Ariel Cordes, Elizabeth Kaplan, Anjali Narayan-Chen, Julia Hockenmaier</div>
+        <div class="pub-venue">Computational Linguistics, 2025</div>
+        <div class="pub-links">
+          <a href="https://direct.mit.edu/coli/article/doi/10.1162/COLI.a.602/135101/BAP-v2-An-Enhanced-Task-Framework-for-Instruction">Paper</a>
+          <a href="https://github.com/prashant-jayan21/bap-v2">Code</a>
+          <a href="https://huggingface.co/prashant-jayan21/Llama-CRAFTS">Model</a>
+          <a href="https://www.alphaxiv.org/overview/2501.10836v3">Blog</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item" id="pub-c1">
+      <div class="pub-thumb">
+        <!-- Replace with: <img src="images/mdcr.png" alt="MDC-R thumbnail"> -->
+        <svg class="thumb-placeholder" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+      </div>
+      <div class="pub-body">
+        <div class="pub-title"><span class="pub-tag">C.1</span><a href="https://arxiv.org/abs/2506.22062">MDC-R: The Minecraft Dialogue Corpus with Reference</a></div>
+        <div class="pub-authors">Chris Madge, Maris Camilleri, Paloma Carretero Garcia, Vanja Karan, Juexi Shao, <span class="me">Prashant Jayannavar</span>, Julian Hough, Benjamin Roth, Massimo Poesio</div>
+        <div class="pub-venue">Under review; arXiv preprint, 2025</div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2506.22062">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item" id="pub-r1">
+      <div class="pub-thumb">
+        <!-- Replace with: <img src="images/dagstuhl.png" alt="Dagstuhl thumbnail"> -->
+        <svg class="thumb-placeholder" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+      </div>
+      <div class="pub-body">
+        <div class="pub-title"><span class="pub-tag">R.1</span><a href="https://drops.dagstuhl.de/entities/document/10.4230/DagRep.14.12.28">Human in the Loop Learning through Grounded Interaction in Games (Dagstuhl Perspectives Workshop 24492)</a></div>
+        <div class="pub-authors">Raffaella Bernardi, Julia Hockenmaier, Udo Kruschwitz, <span class="me">Prashant Jayannavar</span>, Massimo Poesio</div>
+        <div class="pub-venue">Dagstuhl Reports, Vol. 14, Issue 12, 2025</div>
+        <div class="pub-links">
+          <a href="https://drops.dagstuhl.de/entities/document/10.4230/DagRep.14.12.28">Paper</a>
+          <a href="https://www.dagstuhl.de/seminars/seminar-calendar/seminar-details/24492">Website</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item" id="pub-c2">
+      <div class="pub-thumb">
+        <!-- Replace with: <img src="images/acl2020.png" alt="ACL 2020 thumbnail"> -->
+        <svg class="thumb-placeholder" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+      </div>
+      <div class="pub-body">
+        <div class="pub-title"><span class="pub-tag">C.2</span><a href="https://aclanthology.org/2020.acl-main.232.pdf">Learning to Execute Instructions in a Minecraft Dialogue</a></div>
+        <div class="pub-authors"><span class="me">Prashant Jayannavar</span>, Anjali Narayan-Chen, Julia Hockenmaier</div>
+        <div class="pub-venue">ACL 2020</div>
+        <div class="pub-links">
+          <a href="https://aclanthology.org/2020.acl-main.232.pdf">Paper</a>
+          <a href="https://github.com/prashant-jayan21/minecraft-bap-models">Code</a>
+          <a href="https://slideslive.com/38929058/learning-to-execute-instructions-in-a-minecraft-dialogue">Video</a>
+          <a href="https://juliahmr.cs.illinois.edu/Minecraft/ACL2020.html">Website</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item" id="pub-c3">
+      <div class="pub-thumb">
+        <!-- Replace with: <img src="images/acl2019.png" alt="ACL 2019 thumbnail"> -->
+        <svg class="thumb-placeholder" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+      </div>
+      <div class="pub-body">
+        <div class="pub-title"><span class="pub-tag">C.3</span><a href="https://aclanthology.org/P19-1537/">Collaborative Dialogue in Minecraft</a></div>
+        <div class="pub-authors">Anjali Narayan-Chen*, <span class="me">Prashant Jayannavar</span>*, Julia Hockenmaier</div>
+        <div class="pub-venue">ACL 2019</div>
+        <div class="pub-links">
+          <a href="https://aclanthology.org/P19-1537/">Paper</a>
+          <a href="https://drive.google.com/drive/folders/16lDzswcQh8DR2jkQJdoVTK-RyVDFPHKa?usp=sharing">Data</a>
+          <a href="https://github.com/prashant-jayan21/minecraft-dialogue-models">Code (Models)</a>
+          <a href="https://github.com/prashant-jayan21/minecraft-dialogue">Code (Platform)</a>
+          <a href="https://juliahmr.cs.illinois.edu/Minecraft/ACL2019.html">Website</a>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-serif); font-size:18px; font-weight:600; margin:32px 0 16px; letter-spacing:-0.01em;">Other Papers</h3>
+
+    <div class="pub-item" id="pub-c4">
+      <div class="pub-thumb">
+        <!-- Replace with: <img src="images/lara.png" alt="Lara thumbnail"> -->
+        <svg class="thumb-placeholder" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+      </div>
+      <div class="pub-body">
+        <div class="pub-title"><span class="pub-tag">C.4</span><a href="https://advancesincognitivesystems.github.io/acs2022/data/acs22_paper-2603.pdf">Lara — Human-guided Collaborative Problem Solver: Effective Integration of Learning, Reasoning and Communication</a></div>
+        <div class="pub-authors">Harsha Kokel, Mayukh Das, Rakibul Islam, Julia Bonn, Jon Cai, Soham Dan, Anjali Narayan-Chen, <span class="me">Prashant Jayannavar</span>, Janardhan Rao Doppa, Julia Hockenmaier, Sriraam Natarajan, Martha Palmer, Dan Roth</div>
+        <div class="pub-venue">ACS 2022</div>
+        <div class="pub-links">
+          <a href="https://advancesincognitivesystems.github.io/acs2022/data/acs22_paper-2603.pdf">Paper</a>
+          <a href="https://harshakokel.com/pdf/Kokel_ACS2022_supp.pdf">Supplemental</a>
+          <a href="https://starling.utdallas.edu/papers/lara/">Blog</a>
+          <a href="https://youtu.be/6uIIKMVM5nc">Video</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item" id="pub-d1">
+      <div class="pub-thumb">
+        <!-- Replace with: <img src="images/icaps2021.png" alt="ICAPS 2021 thumbnail"> -->
+        <svg class="thumb-placeholder" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+      </div>
+      <div class="pub-body">
+        <div class="pub-title"><span class="pub-tag">D.1</span><a href="https://icaps21.icaps-conference.org/demos/demos/375.pdf">Human-guided Collaborative Problem Solving: A Natural Language based Framework</a></div>
+        <div class="pub-authors">Harsha Kokel, Mayukh Das, Rakibul Islam, Julia Bonn, Jon Cai, Soham Dan, Anjali Narayan-Chen, <span class="me">Prashant Jayannavar</span>, Janardhan Rao Doppa, Julia Hockenmaier, Sriraam Natarajan, Martha Palmer, Dan Roth</div>
+        <div class="pub-venue">ICAPS 2021</div>
+        <div class="pub-links">
+          <a href="https://icaps21.icaps-conference.org/demos/demos/375.pdf">Paper</a>
+          <a href="https://starling.utdallas.edu/papers/collaborative-ps">Blog</a>
+          <a href="https://youtu.be/q1pWe4aahF0">Video</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item" id="pub-w1">
+      <div class="pub-thumb">
+        <!-- Replace with: <img src="images/naacl2015.png" alt="NAACL 2015 thumbnail"> -->
+        <svg class="thumb-placeholder" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+      </div>
+      <div class="pub-body">
+        <div class="pub-title"><span class="pub-tag">W.1</span><a href="https://aclanthology.org/W15-0704.pdf">Validating Literary Theories Using Automatic Social Network Extraction</a></div>
+        <div class="pub-authors"><span class="me">Prashant Jayannavar</span>, Apoorv Agarwal, Melody Ju, Owen Rambow</div>
+        <div class="pub-venue">CLFL Workshop, NAACL HLT 2015</div>
+        <div class="pub-links">
+          <a href="https://aclanthology.org/W15-0704.pdf">Paper</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CV ===== -->
+  <section id="cv" class="fade-in" style="text-align:center; padding: 56px 0 64px;">
+    <h2>Curriculum Vitae</h2>
+    <p style="color:var(--color-muted); margin-bottom:20px; font-size:14.5px;">A more detailed summary of my background and experience.</p>
+    <a href="cv.pdf" target="_blank" style="
+      display:inline-flex; align-items:center; gap:8px;
+      padding:12px 28px; border-radius:8px;
+      background:var(--color-accent); color:#fff;
+      text-decoration:none; font-weight:600; font-size:14.5px;
+      transition: opacity 0.2s;
+    " onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download CV (PDF)
+    </a>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2026 Prashant Jayannavar · Built with care, hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
